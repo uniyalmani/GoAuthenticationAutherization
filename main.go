@@ -1,9 +1,9 @@
 package main
 
 import (
-	"log"
-	"github.com/joho/godotenv"
 	"github.com/gin-gonic/gin"
+	"driver_app/initializers"
+	"driver_app/controllers"
 
 	// _ "github.com/joho/godotenv/autoload"
 )
@@ -11,16 +11,16 @@ import (
 
 
 
-
 func init() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	initializers.LoadEnvVariables()
+	initializers.ConnectTODB()
 }
 
 func main() {
 	router := gin.Default()
 	
+	router.POST("/driver/signup", controllers.CreateDriver)
+	router.POST("/user/signup", controllers.CreateUser)
+
 	router.Run()
 }
