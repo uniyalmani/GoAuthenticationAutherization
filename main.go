@@ -1,15 +1,12 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"driver_app/initializers"
 	"driver_app/controllers"
+	"driver_app/initializers"
 
+	"github.com/gin-gonic/gin"
 	// _ "github.com/joho/godotenv/autoload"
 )
-
-
-
 
 func init() {
 	initializers.LoadEnvVariables()
@@ -18,8 +15,8 @@ func init() {
 
 func main() {
 	router := gin.Default()
-	
-	router.POST("/driver/signup", controllers.CreateDriver)
+
+	router.GET("/driver/signup", controllers.CreateDriver)
 	router.POST("/user/signup", controllers.CreateUser)
 
 	router.Run()
