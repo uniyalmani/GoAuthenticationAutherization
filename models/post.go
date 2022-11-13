@@ -1,14 +1,14 @@
 package models
 
-type SignUp struct {
-	FirstName string `json: "firstName" validate:"required"`
-	LastName  string `json: "lastName" validate:"required"`
-	Password  string `json: "password" validate:"required"`
-	Email     string `json: "email" validate:"required,email"`
-}
+// import (
+// 	//"gopkg.in/validator.v2"
+// 	"github.com/gin-gonic/gin"
+// )
 
-// func (p *SignUp) Validate() error {
-// 	validate := validator.New() //creating validator
-// 	validate.RegisterValidation("email", validateSKU)
-// 	return validate.Struct(p) // passing struct to validate
-// }
+type SignUp struct {
+	FirstName string `json:"firstName" binding:"required"`
+	LastName  string `json:"lastName" binding:"required"`
+	Password  string `json:"password" binding:"required"`
+	Email     string `json:"email" binding:"required,email"`
+	RoleID    int    `json:"roleid"`
+}
